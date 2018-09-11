@@ -1,0 +1,56 @@
+﻿@model DoubleCredit.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+@Styles.Render("~/vendor/bootstrap/css/bootstrap.min.css")
+@Styles.Render("~/css/sb-admin.css")
+@Styles.Render("~/vendor/fontawesome-free/css/all.min.css")
+
+
+<body>
+    <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Login</div>
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <form>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "inputEmail", type = "email", autofocus = "autofocus", placeholder = "Email address" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                <label for="inputEmail">Email address</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "inputPassword", type = "password", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                <label for="inputPassword">Password</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    Remember Password
+                                </label>
+                            </div>
+                        </div>
+                        <input type="submit" value="Log in" class="btn btn-primary btn-block" />
+                    </form>
+                    <div class="text-center">
+                        @*<a class="d-block small mt-3" href="register.html">Register an Account</a>
+                        <a class="d-block small" href="forgot-password.html">Forgot Password?</a>*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
