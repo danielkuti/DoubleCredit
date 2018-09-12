@@ -58,6 +58,11 @@ namespace DoubleCredit.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Last name")]
+        public string Lastname { get; set; }
+
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }

@@ -21,6 +21,11 @@ namespace DoubleCredit.Controllers
             return View();
         }
 
+        public ActionResult GetDeltaDetails()
+        {
+            return PartialView("_DeltaResponsePartial");
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

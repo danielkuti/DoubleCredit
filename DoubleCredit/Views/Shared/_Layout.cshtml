@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     @*@Styles.Render("~/Content/sb")
@@ -22,52 +19,20 @@
 
 </head>
 <body id="page-top">
-    @if (Request.IsAuthenticated)
-    {
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-            <div class="col-lg-11">
-                <a class="navbar-brand" href="index.html">DoubleCredit</a>
-            </div>
-
-            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right col-lg-1" }))
-            {
-                @Html.AntiForgeryToken()
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-circle fa-fw"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">Activity Log</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
-                        </div>
-                    </li>
-                </ul>
-            }
-        </nav>
-
-    }
-    <div id="wrapper">
-        @if (Request.IsAuthenticated)
-        {
-            <ul class="sidebar navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-user-alt"></i>
-                        <span>My Account</span>
-                    </a>
-                </li>
-            </ul>
-        }
-        @RenderBody()
-    </div>
+    @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/sb-admin.min.js"></script>
+
+    <script type="text/javascript">
+        var $loading = $('.preload').hide();
+        $("#cnct-delta-btn").on('click', function () {
+            $loading.show();
+            $("#cnct-delta-btn").hide();
+        })
+    </script>
 
     @RenderSection("scripts", required: false)
 </body>
